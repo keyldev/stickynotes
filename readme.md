@@ -2,7 +2,7 @@
 <image  src="img/logo.png"/>
 </p>
 
-## Немного о
+# Немного о
 
 <b> 📌 Sticky Notes </b> - Программа для создания быстрых заметок на экране.
 
@@ -24,3 +24,26 @@
 * Кастом-окна (цвет заголовка и т.п.)
 * Цвет текста
 * Виджет для всех созданных заметок и возможность скрыть их
+
+# A little about
+
+<b> 📌 Sticky Notes </b> is a program for creating quick notes on the screen.
+
+## What can it do? 📝
+
+1. Create new poems
+2. Be fixed on top of other windows
+3. Start a timer with a notification
+4. Format the text (bold, italics, underline)
+5. Insert pictures
+
+## What should I finish/fix? 🩹
+* Modify the timer
+* Finalize the notification
+* Fix viewmodel
+
+## What to add? 🚀
+* Window transparency
+* Custom windows (title color, etc.)
+* Text color
+* Widget for all created notes and the ability to hide them
