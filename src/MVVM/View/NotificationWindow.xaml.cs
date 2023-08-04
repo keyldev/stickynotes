@@ -32,7 +32,7 @@ namespace stickycardsv2.MVVM.View
                 var transform = PresentationSource.FromVisual(this).CompositionTarget.TransformFromDevice;
                 var corner = transform.Transform(new Point(workingArea.Right, workingArea.Bottom));
 
-                this.Left = corner.X - this.ActualWidth - 100;
+                this.Left = corner.X - this.ActualWidth - 50;
                 this.Top = corner.Y - this.ActualHeight;
                 // выбор звуков
             }));
