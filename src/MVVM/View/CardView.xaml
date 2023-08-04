@@ -1,0 +1,160 @@
+﻿<Window x:Class="stickycardsv2.MVVM.View.CardView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:stickycardsv2.MVVM.View"
+        xmlns:viewModel="clr-namespace:stickycardsv2.MVVM.ViewModel"
+        mc:Ignorable="d" WindowStyle="None" ResizeMode="CanResizeWithGrip" 
+        Title="{Binding CardTitle}" MinHeight="290" MinWidth="350" Height="290" Width="350" 
+        Background="Transparent" AllowsTransparency="True" WindowStartupLocation="CenterScreen"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        Topmost="{Binding IsPinned}" Icon="/Assets/icon.ico">
+    <Window.DataContext>
+        <viewModel:CardViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid VerticalAlignment="Top" Height="25"
+              Background="{Binding HeaderColor}">
+            <Button x:Name="ExitButton" HorizontalAlignment="Right" VerticalAlignment="Stretch"
+                    Height="25" Width="25" Content="✕" Foreground="Gray" BorderThickness="0" Background="Transparent" Click="ExitButton_Click"/>
+            <Button x:Name="SettingsButton" HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="0,0,25,0"
+                    Height="25" Width="25" Content="•••" Foreground="Gray" BorderThickness="0" Background="Transparent"
+                    Command="{Binding OpenSettingsCommand}"/>
+            
+            <Button x:Name="AddNewButton" HorizontalAlignment="Left" VerticalAlignment="Stretch"
+                    Height="25" Width="25" Content="+" Foreground="Gray" BorderThickness="0" Background="Transparent"
+                    Command="{Binding AddNewCardCommand}"/>
+
+            <Button x:Name="PinButton" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="25,0,0,0"
+                    Height="25" Width="25" Foreground="Gray" BorderThickness="0" Background="Transparent"
+                    Command="{Binding PinCardCommand}">
+                <Grid>
+                    <Path Data="M505.014,125.61L386.393,6.989c-5.759-5.769-12.797-8.123-19.306-6.465c-6.515,1.66-11.568,7.103-13.866,14.937
+	l-5.379,18.37c-2.743,9.363-10.913,23.127-17.841,30.056l-96.355,96.37c-6.947,6.954-20.743,15.402-30.126,18.45l-55.658,18.074
+	c-7.719,2.502-13.05,7.712-14.628,14.293c-1.577,6.58,0.815,13.64,6.554,19.361l52.987,52.998l-79.952,79.931
+	c-0.188,0.188-0.366,0.385-0.534,0.591L1.81,498.929c-2.604,3.181-2.373,7.817,0.534,10.724c1.554,1.554,3.603,2.343,5.659,2.343
+	c1.79,0,3.585-0.598,5.065-1.809L148.057,399.7c0.206-0.168,0.402-0.346,0.59-0.534l79.927-79.927l52.982,52.993
+	c4.563,4.572,9.977,7.014,15.322,7.014c1.35,0,2.696-0.156,4.022-0.473c6.59-1.573,11.815-6.9,14.341-14.633l18.042-55.663
+	c3.042-9.359,11.491-23.157,18.445-30.124l96.374-96.366c6.909-6.902,20.678-15.059,30.068-17.813l18.371-5.388
+	c7.835-2.299,13.282-7.357,14.942-13.879C513.139,138.394,510.779,131.357,505.014,125.61z M137.615,387.57l-72.658,59.469
+	l59.459-72.643l79.67-79.649l13.175,13.178L137.615,387.57z M495.976,140.962c-0.146,0.572-1.315,1.703-3.94,2.473l-18.37,5.388
+	c-5.725,1.679-12.438,4.775-18.843,8.504l-8.308-8.307c-3.124-3.124-8.189-3.124-11.313,0.001
+	c-3.124,3.124-3.124,8.189,0.001,11.313l6.205,6.204c-1.685,1.381-3.25,2.767-4.618,4.133l-96.382,96.374
+	c-0.907,0.909-1.827,1.912-2.749,2.966l-6.068-6.067c-3.124-3.124-8.189-3.124-11.313,0.001c-3.124,3.124-3.124,8.189,0.001,11.313
+	l7.809,7.808c-4.317,6.886-8.011,14.275-10.025,20.471l-18.038,55.651c-0.818,2.504-2.017,3.824-2.841,4.021
+	c-0.813,0.196-2.46-0.435-4.309-2.286l-58.463-58.475c-0.059-0.063-0.111-0.129-0.172-0.19c-0.061-0.061-0.127-0.113-0.189-0.171
+	l-82.958-82.976c-1.858-1.853-2.494-3.5-2.3-4.311c0.195-0.812,1.508-1.994,4.006-2.804l55.662-18.075
+	c6.201-2.014,13.585-5.703,20.463-10.013l68.884,68.878c1.563,1.562,3.609,2.343,5.657,2.343s4.095-0.781,5.657-2.343
+	c3.124-3.125,3.124-8.19,0-11.314l-67.142-67.136c1.061-0.93,2.07-1.857,2.983-2.771l96.352-96.368
+	c1.367-1.367,2.754-2.93,4.135-4.612l67.283,67.277c1.563,1.562,3.609,2.343,5.657,2.343s4.095-0.781,5.657-2.343
+	c3.124-3.125,3.124-8.19,0-11.314l-69.372-69.366c3.742-6.413,6.847-13.132,8.523-18.856l5.379-18.367
+	c0.769-2.62,1.894-3.787,2.463-3.932c0.061-0.016,0.133-0.024,0.216-0.024c0.688,0,2.102,0.571,3.819,2.293
+	c0.002,0.002,0.004,0.003,0.006,0.005l118.629,118.63C495.636,138.853,496.12,140.395,495.976,140.962z" Height="15" Width="15" Stretch="Fill" Fill="#FF616161"/>
+
+                </Grid>
+
+            </Button>
+        </Grid>
+        <Grid x:Name="ContentGrid" Margin="0,25,0,0" Background="#FF333333">
+            <Grid Margin="0,0,0,50">
+                <!--add scrollbar style-->
+                <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                    <ItemsControl ItemsSource="{Binding ItemsList}"/>
+                </ScrollViewer>
+            </Grid>
+            <Separator VerticalAlignment="Bottom" Margin="0,0,0,50"/>
+            <Grid VerticalAlignment="Bottom" Height="50">
+                <StackPanel Orientation="Horizontal">
+                    <Button   x:Name="AddTextBoxButton" Command="{Binding AddTextBoxCommand}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Margin="5"
+                        BorderThickness="0" Background="Transparent" Content="T" FontSize="20" FontWeight="Bold"
+                        Foreground="Gray">
+                        <Button.ToolTip>
+                            <ToolTip Background="#FF444444">
+                                <TextBlock Text="Добавить текстовое поле" Foreground="#FFB9B9B9"/>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+                    <Button Command="{Binding SetItalicText}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Margin="5,0,0,0"
+                        BorderThickness="0" Background="Transparent" Content="I" FontSize="20" FontWeight="Bold"
+                        Foreground="Gray" FontStyle="Italic"  >
+                        <Button.ToolTip>
+                            <ToolTip Background="#FF444444">
+                                <TextBlock Text="Форматирование: курсив" Foreground="#FFB9B9B9"/>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+                    <Button Command="{Binding SetUnderlineText}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Margin="5"
+                        BorderThickness="0" Background="Transparent" Content="U" FontSize="20" FontWeight="Bold"
+                        Foreground="Gray"  >
+                        <Button.ToolTip>
+                            <ToolTip Background="#FF444444">
+                                <TextBlock Text="Форматирование: подчеркивание" Foreground="#FFB9B9B9"/>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+                    <Button Command="{Binding SetFontWeight}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Margin="5"
+                        BorderThickness="0" Background="Transparent" Content="B" FontSize="20" FontWeight="Bold"
+                        Foreground="Gray"  >
+                        <Button.ToolTip>
+                            <ToolTip Background="#FF444444">
+                                <TextBlock Text="Форматирование: жирность" Foreground="#FFB9B9B9"/>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+                    <Button Command="{Binding AddImage}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Margin="5,0,0,0"
+                        BorderThickness="0" Background="Transparent" FontSize="20" FontWeight="Bold"
+                        Foreground="Gray"  >
+                        <Button.ToolTip>
+                            <ToolTip Background="#FF444444">
+                                <TextBlock Text="Добавить изображение из файла" Foreground="#FFB9B9B9"/>
+                            </ToolTip>
+                        </Button.ToolTip>
+                        <Grid>
+                            <Path Margin="0,0,3,1" HorizontalAlignment="Center" 
+                                  Data="M17.5,21.25H6.5A3.75,3.75,0,0,1,2.75,17.5V6.5A3.75,3.75,0,0,1,6.5,2.75h11A3.75,3.75,0,0,1,21.25,6.5v11A3.75,3.75,0,0,1,17.5,21.25Zm-11-17A2.25,2.25,0,0,0,4.25,6.5v11A2.25,2.25,0,0,0,6.5,19.75h11a2.25,2.25,0,0,0,2.25-2.25V6.5A2.25,2.25,0,0,0,17.5,4.25Z" Fill="Gray"/>
+                            <Path Margin="0,0,3,1" HorizontalAlignment="Center" 
+                                  Data="M3.5,17.06a.76.76,0,0,1-.58-.27.75.75,0,0,1,.1-1l4.7-3.9a3.75,3.75,0,0,1,5.27.48l1.12,1.34a2.25,2.25,0,0,0,3.21.25L20,11.56a.75.75,0,0,1,1,1.13L18.31,15A3.74,3.74,0,0,1,13,14.62l-1.12-1.34A2.25,2.25,0,0,0,8.68,13L4,16.89A.72.72,0,0,1,3.5,17.06Z" Fill="Gray"/>
+                        </Grid>
+                    </Button>
+                    <Popup x:Name="TimerPopup" IsOpen="{Binding OpenTimerSettings}"
+                           StaysOpen="False" Placement="Bottom" PlacementTarget="{Binding ElementName=SetTimer}"
+                           AllowsTransparency="true">
+                        <StackPanel Orientation="Horizontal" Background="DarkGray" Width="60">
+                            <TextBox HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding TimerMinutes}" 
+                                     VerticalAlignment="Top" Width="30" Height="20"
+                                     BorderThickness="0,0,0,1" Foreground="Gray" />
+                            <Button Command="{Binding StartTimer}" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                    BorderThickness="0" Height="20" Background="Transparent" >
+                                <Grid>
+                                    <Path  
+                                    Data="M208.511,102.62c-6.6-6.623-16.58-8.608-25.222-5.022c-8.674,3.589-14.303,12.03-14.303,21.398v251.797
+		                            c0,9.368,5.629,17.809,14.303,21.397c2.853,1.187,5.864,1.762,8.849,1.762c6.025,0,11.958-2.353,16.373-6.784l125.906-125.9
+		                            c9.041-9.04,9.041-23.708,0-32.748L208.511,102.62z" Fill="#FF22A798" Width="30" Height="10" Stretch="Uniform"/>
+                                    <Path  
+                                    Data="M244.895,0C109.644,0,0,109.645,0,244.894c0,135.251,109.644,244.895,244.895,244.895
+		                            s244.894-109.644,244.894-244.895C489.788,109.645,380.146,0,244.895,0z M244.895,440.81c-108.034,0-195.915-87.89-195.915-195.916
+		                            S136.861,48.979,244.895,48.979S440.81,136.868,440.81,244.894S352.929,440.81,244.895,440.81z" Fill="#FF22A798" Width="15" Height="20" Stretch="Uniform"/>
+                                </Grid>
+                            </Button>
+                        </StackPanel>
+                    </Popup>
+                    <Button x:Name="SetTimer" Command="{Binding AddTimerCommand}" HorizontalAlignment="Left" 
+                            VerticalAlignment="Center" Height="30" Width="30" Margin="5,0,0,0"
+                        BorderThickness="0" Background="Transparent" FontSize="20" FontWeight="Bold"
+                        Foreground="Gray"   >
+                        <Grid>
+                            <Path Data="M233.004,0C104.224,0,0,104.212,0,233.004c0,128.781,104.212,233.004,233.004,233.004    c128.782,0,233.004-104.212,233.004-233.004C466.008,104.222,361.796,0,233.004,0z M244.484,242.659l-63.512,75.511    c-5.333,6.34-14.797,7.156-21.135,1.824c-6.34-5.333-7.157-14.795-1.824-21.135l59.991-71.325V58.028c0-8.284,6.716-15,15-15    s15,6.716,15,15v174.976h0C248.004,236.536,246.757,239.956,244.484,242.659z" Fill="Gray" Height="18" Width="20" Stretch="Uniform"/>
+                        </Grid>
+                        <Button.ToolTip>
+                            <ToolTip Background="#FF444444">
+                                <TextBlock Text="Задать время уведомления (таймер) мин." Foreground="#FFB9B9B9"/>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Window>
